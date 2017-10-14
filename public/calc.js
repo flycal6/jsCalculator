@@ -1,3 +1,11 @@
+var num1;
+var num2;
+var operation;
+$('.operator').click(function(e) {
+    var oper = $(this).text();
+    chooseOperation(oper);
+});
+
 $('.number').click(function(e) {
     var text = $(this).text();
     addToDisplay(text);
@@ -38,13 +46,6 @@ $(document).keypress(function(e) {
 function addToDisplay(text) {
     $('#display').append(text);
 }
-var num1;
-var num2;
-var operation;
-$('.operator').click(function(e) {
-    var oper = $(this).text();
-    chooseOperation(oper);
-});
 
 function chooseOperation(oper) {
     switch (oper) {
@@ -69,8 +70,6 @@ function chooseOperation(oper) {
             operation = oper;
             clearDisplay();
     }
-
-
 }
 
 function controller(operator) {
