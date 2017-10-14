@@ -8,27 +8,8 @@ var num2;
 var operation;
 $('.operator').click(function(e) {
     var oper = $(this).text();
-    if(oper !== '='){
-        num1 = $('#display').text();
-        clearDisplay();
-    }
+
     switch (oper) {
-        case '/':
-            operation = '/';
-            break;
-
-        case 'X':
-            operation = 'X';
-            break;
-
-        case '+':
-            operation = '+';
-            break;
-
-        case '-':
-            operation = '-';
-
-            break;
         case '=':
             num2 = $('#display').text();
             controller(operation);
@@ -40,7 +21,11 @@ $('.operator').click(function(e) {
             num1 = 0;
             num2 = 0;
             break;
+
         default:
+            num1 = $('#display').text();
+            operation = oper;
+            clearDisplay();
     }
 
 });
@@ -49,14 +34,16 @@ function controller(operator) {
     switch (operator) {
         case '/':
             divide(num1, num2);
-
             break;
+
         case 'X':
             multiply(num1, num2);
             break;
+
         case '+':
             sum(num1, num2);
             break;
+            
         case '-':
             subtract(num1, num2);
             break;
