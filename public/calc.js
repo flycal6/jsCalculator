@@ -1,8 +1,11 @@
 $('.number').click(function(e) {
-    var currentText = $('#display').text();
-    $('#display').text(currentText + $(this).text());
+    var text = $(this).text();
+    addToDisplay(text);
 });
 
+function addToDisplay(text) {
+    $('#display').append(text);
+}
 var num1;
 var num2;
 var operation;
@@ -20,6 +23,10 @@ $('.operator').click(function(e) {
             operation = '';
             num1 = 0;
             num2 = 0;
+            break;
+
+        case '.':
+            addToDisplay(oper);
             break;
 
         default:
@@ -43,7 +50,7 @@ function controller(operator) {
         case '+':
             sum(num1, num2);
             break;
-            
+
         case '-':
             subtract(num1, num2);
             break;
@@ -67,7 +74,7 @@ function subtract(num1, num2) {
 
 function sum(num1, num2) {
     clearDisplay();
-    $('#display').text(parseInt(num1) + parseInt(num2));
+    $('#display').text(parseFloat(num1) + parseFloat(num2));
     operation = '';
 }
 
