@@ -3,6 +3,38 @@ $('.number').click(function(e) {
     addToDisplay(text);
 });
 
+$(document).keypress(function(e) {
+    var text = e.key;
+    switch (text) {
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '0':
+            addToDisplay(text);
+            break;
+
+        case '=':
+        case 'C':
+        case '.':
+        case '+':
+        case '-':
+        case '/':
+        case 'X':
+            chooseOperation(text);
+            break;
+        case 'Enter':
+            text = '=';
+            chooseOperation(text);
+            break;
+    }
+});
+
 function addToDisplay(text) {
     $('#display').append(text);
 }
@@ -11,7 +43,10 @@ var num2;
 var operation;
 $('.operator').click(function(e) {
     var oper = $(this).text();
+    chooseOperation(oper);
+});
 
+function chooseOperation(oper) {
     switch (oper) {
         case '=':
             num2 = $('#display').text();
@@ -35,7 +70,8 @@ $('.operator').click(function(e) {
             clearDisplay();
     }
 
-});
+
+}
 
 function controller(operator) {
     switch (operator) {
