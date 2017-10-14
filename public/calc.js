@@ -8,28 +8,24 @@ var num2;
 var operation;
 $('.operator').click(function(e) {
     var oper = $(this).text();
+    if(oper !== '='){
+        num1 = $('#display').text();
+        clearDisplay();
+    }
     switch (oper) {
         case '/':
-            num1 = $('#display').text();
-            clearDisplay();
             operation = '/';
             break;
 
         case 'X':
-            num1 = $('#display').text();
-            clearDisplay();
             operation = 'X';
             break;
 
         case '+':
-            num1 = $('#display').text();
-            clearDisplay();
             operation = '+';
             break;
 
         case '-':
-            num1 = $('#display').text();
-            clearDisplay();
             operation = '-';
 
             break;
