@@ -24,12 +24,12 @@ $(document).keypress(function(e) {
         case '8':
         case '9':
         case '0':
+        case '.':
             addToDisplay(text);
             break;
 
         case '=':
         case 'C':
-        case '.':
         case '+':
         case '-':
         case '/':
@@ -52,13 +52,12 @@ function chooseOperation(oper) {
         case '=':
             num2 = $('#display').text();
             controller(operation);
+            operation = '';
             break;
 
         case 'C':
             clearDisplay();
-            operation = '';
-            num1 = 0;
-            num2 = 0;
+            clearMemory();
             break;
 
         case '.':
@@ -110,9 +109,14 @@ function subtract(num1, num2) {
 function sum(num1, num2) {
     clearDisplay();
     $('#display').text(parseFloat(num1) + parseFloat(num2));
-    operation = '';
 }
 
 function clearDisplay() {
     $('#display').text('');
+}
+
+function clearMemory() {
+    operation = '';
+    num1 = 0;
+    num2 = 0;
 }
